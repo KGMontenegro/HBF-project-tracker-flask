@@ -18,7 +18,25 @@ def get_student():
     project_grades = hackbright.get_grades_by_github(github)
 
     html = render_template("student_info.html", first=first, last=last, github=github, project_grades=project_grades)
-    print project_grades
+
+    return html
+
+
+@app.route("/project")
+def get_project_info():
+    """ Show information about a project. """
+
+    title = request.args.get('title')
+
+    project = hackbright.get_project_by_title(title)
+    title, description, max_grade = project
+
+    students_completed = hackbright.get_grades_by_title(title)
+
+    student_name = hackbright.get_student_by_github(students_completed[0])
+
+    html = render_template("project_info.html", title=title, description=description, max_grade=max_grade, students_completed=students_completed, student_name=student_name)
+
     return html
 
 

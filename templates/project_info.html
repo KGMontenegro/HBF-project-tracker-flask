@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>Project Information</title>
+</head>
+<body>
+  <h2>Project Name: {{ title }} </h2> 
+    <ul>
+      <li><b>Description of the Project: </b> {{ description }}</li>   
+      <li><b>Maximum grade possible: </b> {{ max_grade }}</li> 
+    </ul>
+  
+      {% if project_grades %}
+    <ul>
+      {% for github, grade in students_completed %}
+        <li><a href='/student?github={{ github }}'>{{ github }}</a>: {{ grade }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+</body>
+</html>
+
+
+
+   

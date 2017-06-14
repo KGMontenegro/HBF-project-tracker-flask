@@ -117,22 +117,22 @@ def assign_grade(github, title, grade):
         grade=grade, acct=github, title=title)
 
 
-def get_grades_by_github(github):
+def get_grades_by_github(in_github):
     """Get a list of all grades for a student by their github username"""
 
     QUERY = """
         SELECT project_title, grade
         FROM Grades
-        WHERE student_github = :github
+        WHERE student_github = :placeholder_github
         """
 
-    db_cursor = db.session.execute(QUERY, {'github': github})
+    db_cursor = db.session.execute(QUERY, {'placeholder_github': in_github})
 
     rows = db_cursor.fetchall()
 
     for row in rows:
         print "Student {acct} received grade of {grade} for {title}".format(
-            acct=github, grade=row[1], title=row[0])
+            acct=in_github, grade=row[1], title=row[0])
 
     return rows
 

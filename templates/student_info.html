@@ -12,7 +12,7 @@
     {% if project_grades %}
     <ul>
       {% for title, grade in project_grades %}
-        <li>{{ title, grade }}</li>
+        <li><a href='/project?title={{ title }}'>{{ title }}</a>: {{ grade }}</li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -21,14 +21,3 @@
 
 </body>
 </html>
-
-
-<!-- project_grades 
-row[0] = title
-row[1] = grade
-
-
-
-
-for title, grade in project_grades:
-return title, grade-->

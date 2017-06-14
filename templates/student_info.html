@@ -8,5 +8,27 @@
 
   <p>GitHub Account: {{ github }}</p>
 
+  <p>
+    {% if project_grades %}
+    <ul>
+      {% for title, grade in project_grades %}
+        <li>{{ title, grade }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
 </body>
 </html>
+
+
+<!-- project_grades 
+row[0] = title
+row[1] = grade
+
+
+
+
+for title, grade in project_grades:
+return title, grade-->
